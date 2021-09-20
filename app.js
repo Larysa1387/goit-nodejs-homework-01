@@ -34,43 +34,19 @@ async function invokeAction({ action, id, name, email, phone }) {
         throw new Error(`Such contact with id=${id} doesn't exist`.red);
       }
       console.log(contact);
-      // try {
-      //   const contact = await getContactById(id);
-      // if (!contact) {
-      //   throw new Error(`Such contact with id=${id} doesn't exist`);
-      // }
-      //   console.log(contact);
-      // } catch (error) {
-      //   console.log(error.message.orange);
-      // }
       break;
 
     case "add":
       const newContact = await asyncHandler(addContact({ name, email, phone }));
       console.log("New contact was added".yellow, newContact);
-      // try {
-      //   const newContact = await addContact({ name, email, phone });
-      //   console.log(newContact);
-      // } catch (error) {
-      //   console.log(error.message.orange);
-      // }
       break;
 
     case "remove":
       const contactToDel = await asyncHandler(removeContact(id));
       if (!contactToDel) {
-        throw new Error(`Such contact ${contactToDel} doesn't exist`);
+        throw new Error(`Such contact with id=${id} doesn't exist`.red);
       }
       console.log(`Contact with id=${id} was removed`.green);
-      // try {
-      //   const contact = await removeContact(id);
-      // if (!contact) {
-      //   throw new Error(`Such contact ${contact} doesn't exist`);
-      // }
-      // console.log(`Contact with id=${id} was removed`);
-      // } catch (error) {
-      //   console.log(error.message.orange);
-      // }
       break;
 
     default:
