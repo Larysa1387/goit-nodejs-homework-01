@@ -29,41 +29,40 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "get":
-      // const contact = await asyncHandler(getContactById(id));
-      // console.log(contact);
-      try {
-        const contact = await getContactById(id);
-        if (!contact) {
-          throw new Error(`Such contact with id=${id} doesn't exist`);
-        }
-        console.log(contact);
-      } catch (error) {
-        console.log(error.message.orange);
-      }
+      const contact = await asyncHandler(getContactById(id));
+      console.log(contact);
+      // try {
+      //   const contact = await getContactById(id);
+      //   if (!contact) {
+      //     throw new Error(`Such contact with id=${id} doesn't exist`);
+      //   }
+      //   console.log(contact);
+      // } catch (error) {
+      //   console.log(error.message.orange);
+      // }
       break;
 
     case "add":
-      // const newContact = await addContact({ name, email, phone });
-      // await asyncHandler(addContact(newContact));
-      try {
-        const newContact = await addContact({ name, email, phone });
-        console.log(newContact);
-      } catch (error) {
-        console.log(error.message.orange);
-      }
+      await asyncHandler(addContact({ name, email, phone }));
+      // try {
+      //   const newContact = await addContact({ name, email, phone });
+      //   console.log(newContact);
+      // } catch (error) {
+      //   console.log(error.message.orange);
+      // }
       break;
 
     case "remove":
-      // await asyncHandler(removeContact(id));
-      try {
-        const contact = await removeContact(id);
-        if (!contact) {
-          throw new Error(`Such contact ${contact} doesn't exist`);
-        }
-        console.log(`Contact with id=${id} was removed`);
-      } catch (error) {
-        console.log(error.message.orange);
-      }
+      await asyncHandler(removeContact(id));
+      // try {
+      //   const contact = await removeContact(id);
+      //   if (!contact) {
+      //     throw new Error(`Such contact ${contact} doesn't exist`);
+      //   }
+      //   console.log(`Contact with id=${id} was removed`);
+      // } catch (error) {
+      //   console.log(error.message.orange);
+      // }
       break;
 
     default:

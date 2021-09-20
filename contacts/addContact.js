@@ -8,7 +8,7 @@ const addContact = async data => {
   const allContacts = await listContacts();
   const newContact = { id: allContacts.length + 2, ...data };
   const updateContacts = [...allContacts, newContact];
-  await fs.writeFile(contactsPath, JSON.stringify(updateContacts));
+  fs.writeFile(contactsPath, JSON.stringify(updateContacts));
   return newContact;
 };
 
