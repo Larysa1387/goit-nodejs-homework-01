@@ -30,12 +30,15 @@ async function invokeAction({ action, id, name, email, phone }) {
 
     case "get":
       const contact = await asyncHandler(getContactById(id));
+      if (!contact) {
+        throw new Error(`Such contact with id=${id} doesn't exist`.red);
+      }
       console.log(contact);
       // try {
       //   const contact = await getContactById(id);
-      //   if (!contact) {
-      //     throw new Error(`Such contact with id=${id} doesn't exist`);
-      //   }
+      // if (!contact) {
+      //   throw new Error(`Such contact with id=${id} doesn't exist`);
+      // }
       //   console.log(contact);
       // } catch (error) {
       //   console.log(error.message.orange);
@@ -43,7 +46,8 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "add":
-      await asyncHandler(addContact({ name, email, phone }));
+      const newContact = await asyncHandler(addContact({ name, email, phone }));
+      console.log("New contact was added".yellow, newContact);
       // try {
       //   const newContact = await addContact({ name, email, phone });
       //   console.log(newContact);
@@ -53,13 +57,17 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "remove":
-      await asyncHandler(removeContact(id));
+      const contactToDel = await asyncHandler(removeContact(id));
+      if (!contactToDel) {
+        throw new Error(`Such contact ${contactToDel} doesn't exist`);
+      }
+      console.log(`Contact with id=${id} was removed`.green);
       // try {
       //   const contact = await removeContact(id);
-      //   if (!contact) {
-      //     throw new Error(`Such contact ${contact} doesn't exist`);
-      //   }
-      //   console.log(`Contact with id=${id} was removed`);
+      // if (!contact) {
+      //   throw new Error(`Such contact ${contact} doesn't exist`);
+      // }
+      // console.log(`Contact with id=${id} was removed`);
       // } catch (error) {
       //   console.log(error.message.orange);
       // }
