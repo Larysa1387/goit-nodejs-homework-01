@@ -6,7 +6,9 @@ const contactsPath = path.join(__dirname, "..", "db", "contacts.json");
 
 const removeContact = async id => {
   const allContacts = await listContacts();
-  const deleteContactIdx = allContacts.findIndex(contact => contact.id == id);
+  const deleteContactIdx = allContacts.findIndex(
+    contact => contact.id === Number(id)
+  );
   if (deleteContactIdx === -1) return null;
   // allContacts.splice(deleteContactIdx, 1);
   const newContacts = allContacts.filter(contact => contact.id != id);

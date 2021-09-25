@@ -52,5 +52,17 @@
     "name": "Mango",
     "email": "mango@gmail.com",
     "phone": "322-22-22"
+  },
+  {
+    "id": "722c7e71-72c7-49ce-9d15-734da300fc73",
+    "name": "Leo",
+    "email": "Leo@gmail.com",
+    "phone": "4566-456-89"
+  },
+  {
+    "id": "2d3ce60b-9621-4393-af40-7bd1f3fb3159",
+    "name": "Leo",
+    "email": "Leo_Bolt@gmail.com",
+    "phone": "746-453-89"
   }
 ]
